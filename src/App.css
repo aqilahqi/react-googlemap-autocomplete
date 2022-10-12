@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5 {
 p {
     margin-bottom: 0;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 20px;
 }
 
 .fw-bold {
@@ -52,19 +52,10 @@ p {
     padding: 1rem;
 }
 
-.bottom-wrapper {
-    /* background: red; */
-    margin-top: -4rem;
-    padding-top: 5rem;
-    border-top-right-radius: 2rem;
-    border-top-left-radius: 2rem;
-}
-
 .map {
     padding: 1rem 2rem;
-    /* display: flex;
-    justify-content: center; */
 }
+
 .map > div {
     max-width: 600px;
     width: calc(100vw - 4rem);
@@ -75,4 +66,15 @@ p {
     box-shadow: 6px 4px 0px 1px #fadb14;
     -webkit-box-shadow: 6px 4px 0px 1px #fadb14;
     -moz-box-shadow: 6px 4px 0px 1px #fadb14;
+}
+
+@media only screen and (max-width: 580px) {
+    .map > div {
+        height: 300px;
+        width: calc(100vw - 2rem);
+    }
+
+    .map {
+        padding: 1rem;
+    }
 }

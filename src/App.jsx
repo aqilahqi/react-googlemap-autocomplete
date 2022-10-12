@@ -22,7 +22,7 @@ const App = () => {
           <Row>
             <Col xs={{ span: 24 }} xl={{ span: 10, offset: 6 }}>
               <Map />
-              <div className="bottom-wrapper">
+              <div>
                 <SearchBox />
                 <SearchHistory />
               </div>
