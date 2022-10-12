@@ -1,19 +1,78 @@
 @import 'antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
     display: block !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+p {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.fw-bold {
+    font-weight: 600;
+}
+.fw-regular {
+    font-weight: 400;
+}
+.fw-light {
+    font-weight: 300;
+}
+
+.ant-layout {
+    background: #fff;
+}
+
+.ant-layout-header {
+    background: #fff;
+    min-height: 64px;
+    height: auto;
+    padding: 1rem;
+}
+
+.custom-header {
+    background: #fadb14;
+    border-radius: 0.6rem;
+    padding: 1rem 2rem;
+}
+.custom-header h1 {
+    margin-bottom: 0.8rem;
+}
+
+.search-history-wrapper, .searchbox-wrapper {
+    padding: 1rem;
+}
+
+.bottom-wrapper {
+    /* background: red; */
+    margin-top: -4rem;
+    padding-top: 5rem;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+}
 
 .map {
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
+    padding: 1rem 2rem;
+    /* display: flex;
+    justify-content: center; */
 }
 .map > div {
     max-width: 600px;
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 4rem);
     height: 400px;
     position: relative;
     border-radius: 0.6rem;
+    margin: 0 auto;
+    box-shadow: 6px 4px 0px 1px #fadb14;
+    -webkit-box-shadow: 6px 4px 0px 1px #fadb14;
+    -moz-box-shadow: 6px 4px 0px 1px #fadb14;
 }

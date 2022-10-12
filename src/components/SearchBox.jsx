@@ -2,17 +2,20 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import { Select } from "antd";
+import { Select, Spin } from "antd";
 import React, { useState } from "react";
+import { setPlaces, selectedPlace } from "../redux/actions/placeActions";
+import { useDispatch } from "react-redux";
 
 const { Option } = Select;
 
 const SearchBox = () => {
+  const dispatch = useDispatch();
   const {
     ready,
     value,
     setValue,
-    suggestions: { status, data },
+    suggestions: { status, data, loading },
     clearSuggestions,
   } = usePlacesAutocomplete();
 
@@ -29,7 +32,6 @@ const SearchBox = () => {
             </Option>
           ))
         );
-      console.log("onSearch", data);
     }
   };
 
@@ -40,29 +42,31 @@ const SearchBox = () => {
     const results = await getGeocode({ address });
 
     const { lat, lng } = await getLatLng(results[0]);
-
-    // set marker position
-    // setSelected({lat, lng})
-    console.log("onChange", results[0]);
+    dispatch(setPlaces(address));
+    dispatch(selectedPlace({ lat, lng }));
   };
 
   return (
-    <Select
-      placeholder="Select a person"
-      showSearch
-      value={value}
-      searchValue={value}
-      defaultActiveFirstOption={false}
-      showArrow={false}
-      filterOption={false}
-      onChange={onChange}
-      onSearch={onSearch}
-      notFoundContent={null}
-      style={{ width: "100%" }}
-      disabled={!ready}
-    >
-      {options}
-    </Select>
+    <div className="searchbox-wrapper">
+      <h4>Search for a new location</h4>
+      <Select
+        placeholder="Search a location.."
+        showSearch
+        value={value}
+        searchValue={value}
+        defaultActiveFirstOption={false}
+        showArrow={false}
+        filterOption={false}
+        onChange={onChange}
+        onSearch={onSearch}
+        notFoundContent={null}
+        style={{ width: "100%" }}
+        disabled={!ready}
+        loading={loading}
+      >
+        {options}
+      </Select>
+    </div>
   );
 };
 

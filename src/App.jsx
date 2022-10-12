@@ -2,19 +2,35 @@ import CustomHeader from "./components/CustomHeader";
 import Map from "./components/Map";
 import SearchBox from "./components/SearchBox";
 import SearchHistory from "./components/SearchHistory";
-
-// import { useState } from "react";
+import { Layout } from "antd";
+const { Header, Content, Footer } = Layout;
+import { Col, Row } from "antd";
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="mainPage">
-      <CustomHeader />
-      <Map />
-      <SearchBox />
-      <hr />
-      <SearchHistory />
-    </div>
+    <Layout className="layout">
+      <div className="mainPage">
+        <Header>
+          <Row>
+            <Col xs={{ span: 24 }} xl={{ span: 10, offset: 6 }}>
+              <CustomHeader />
+            </Col>
+          </Row>
+        </Header>
+        <Content>
+          <Row>
+            <Col xs={{ span: 24 }} xl={{ span: 10, offset: 6 }}>
+              <Map />
+              <div className="bottom-wrapper">
+                <SearchBox />
+                <SearchHistory />
+              </div>
+            </Col>
+          </Row>
+        </Content>
+      </div>
+    </Layout>
   );
 };
 
