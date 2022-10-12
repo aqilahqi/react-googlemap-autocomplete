@@ -33,9 +33,17 @@ const SearchBox = () => {
     }
   };
 
-  const onChange = (data) => {
-    setValue(data);
-    console.log("onChange", data);
+  const onChange = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
+
+    const results = await getGeocode({ address });
+
+    const { lat, lng } = await getLatLng(results[0]);
+
+    // set marker position
+    // setSelected({lat, lng})
+    console.log("onChange", results[0]);
   };
 
   return (
@@ -51,6 +59,7 @@ const SearchBox = () => {
       onSearch={onSearch}
       notFoundContent={null}
       style={{ width: "100%" }}
+      disabled={!ready}
     >
       {options}
     </Select>
