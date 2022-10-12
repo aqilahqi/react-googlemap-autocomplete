@@ -35,15 +35,11 @@ const SearchBox = () => {
     }
   };
 
-  const onChange = async (address) => {
+  const onChange = (address) => {
     setValue(address, false);
     clearSuggestions();
-
-    const results = await getGeocode({ address });
-
-    const { lat, lng } = await getLatLng(results[0]);
     dispatch(setPlaces(address));
-    dispatch(selectedPlace({ lat, lng }));
+    dispatch(selectedPlace(address));
   };
 
   return (

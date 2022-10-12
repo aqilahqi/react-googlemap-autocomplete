@@ -11,10 +11,8 @@ const SearchHistory = () => {
   const places = useSelector((state) => state.allPlaces.places);
   const dispatch = useDispatch();
 
-  const renderMap = async (address) => {
-    const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
-    dispatch(selectedPlace({ lat, lng }));
+  const renderMap = (address) => {
+    dispatch(selectedPlace(address));
   };
 
   return (
