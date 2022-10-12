@@ -1,8 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+import { getGeocode, getLatLng } from "use-places-autocomplete";
 
 export const setPlaces = (places) => {
   return {

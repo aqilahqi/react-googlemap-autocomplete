@@ -1,7 +1,4 @@
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+import usePlacesAutocomplete from "use-places-autocomplete";
 import { Select, Spin } from "antd";
 import React, { useState } from "react";
 import { setPlaces, selectedPlace } from "../redux/actions/placeActions";

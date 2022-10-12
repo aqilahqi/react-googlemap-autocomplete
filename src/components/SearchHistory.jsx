@@ -1,11 +1,7 @@
 import React from "react";
-import { Divider, List, Typography } from "antd";
+import { List } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedPlace } from "../redux/actions/placeActions";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
 
 const SearchHistory = () => {
   const places = useSelector((state) => state.allPlaces.places);

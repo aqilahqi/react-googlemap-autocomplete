@@ -1,5 +1,3 @@
-import React from "react";
-
 const CustomHeader = () => {
   return (
     <div className="custom-header">
