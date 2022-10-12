@@ -12,10 +12,14 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 0;
 }
 
-p {
+p,a {
     margin-bottom: 0;
     font-size: 14px;
     line-height: 20px;
+}
+
+.input-label {
+    margin-bottom: 6px;
 }
 
 .fw-bold {
@@ -69,6 +73,9 @@ p {
 }
 
 @media only screen and (max-width: 580px) {
+    h1 {
+        font-size: 32px !important;
+    }
     .map > div {
         height: 300px;
         width: calc(100vw - 2rem);

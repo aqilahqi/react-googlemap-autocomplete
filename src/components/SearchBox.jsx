@@ -44,7 +44,7 @@ const SearchBox = () => {
 
   return (
     <div className="searchbox-wrapper">
-      <h4>Search for a new location</h4>
+      <h4 className="input-label">Search for a new location</h4>
       <Select
         placeholder="Search a location.."
         showSearch
