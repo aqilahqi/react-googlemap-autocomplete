@@ -52,7 +52,12 @@ const SearchBox = () => {
   return (
     <div ref={ref} className="searchinput-wrapper">
       <h4 style={{ marginBottom: "0.6rem" }}>Search a new location</h4>
-      <Input value={value} onChange={handleInput} disabled={!ready} />
+      <Input
+        value={value}
+        allowClear
+        onChange={handleInput}
+        disabled={!ready}
+      />
       {status === "OK" && (
         <ul className="listWrapper">{renderSuggestions()}</ul>
       )}
