@@ -12,5 +12,8 @@ export const selectedPlace = (address) => async (dispatch) => {
   const results = await getGeocode({ address });
   const { lat, lng } = await getLatLng(results[0]);
 
-  dispatch({ type: ActionTypes.SELECTED_PLACE, payload: { lat, lng } });
+  dispatch({
+    type: ActionTypes.SELECTED_PLACE,
+    payload: { lat, lng, address },
+  });
 };

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Map = ({ center, zoom }) => {
   const selectedPlace = useSelector((state) => state.allPlaces.selectedPlace);
-  const { lat, lng } = selectedPlace;
+  const { lat, lng, address } = selectedPlace;
 
   return (
     <div className="map">
@@ -13,6 +13,15 @@ const Map = ({ center, zoom }) => {
       <GoogleMap zoom={!lat ? zoom : 18} center={!lat ? center : { lat, lng }}>
         <MarkerF position={!lat ? center : { lat, lng }} />
       </GoogleMap>
+      {address ? (
+        <p
+          style={{ marginTop: "0.6rem", fontStyle: "italic", fontSize: "12px" }}
+        >
+          {address}
+        </p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
