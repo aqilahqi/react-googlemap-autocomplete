@@ -84,12 +84,16 @@ p,a {
     .map {
         padding: 1rem;
     }
+    .searchinput-wrapper {
+        margin-top: 0;
+    }
 }
 
 .searchinput-wrapper {
     position: relative;
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-top: 20px;
 }
 .listWrapper {
     position: absolute;
