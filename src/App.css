@@ -62,7 +62,6 @@ p,a {
 
 .map > div {
     max-width: 600px;
-    width: calc(100vw - 4rem);
     height: 400px;
     position: relative;
     border-radius: 0.6rem;
