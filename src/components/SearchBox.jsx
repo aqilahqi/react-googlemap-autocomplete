@@ -3,6 +3,7 @@ import { Select, Spin } from "antd";
 import React, { useState } from "react";
 import { setPlaces, selectedPlace } from "../redux/actions/placeActions";
 import { useDispatch } from "react-redux";
+import debounce from "lodash.debounce";
 
 const { Option } = Select;
 
@@ -29,6 +30,9 @@ const SearchBox = () => {
             </Option>
           ))
         );
+    } else {
+      setValue("");
+      clearSuggestions();
     }
   };
 
@@ -38,6 +42,8 @@ const SearchBox = () => {
     dispatch(setPlaces(address));
     dispatch(selectedPlace(address));
   };
+
+  console.log({ value, options });
 
   return (
     <div className="searchbox-wrapper">
