@@ -13,7 +13,7 @@ const App = () => {
       <div className="mainPage">
         <Header>
           <Row>
-            <Col xs={{ span: 24 }} xl={{ span: 10, offset: 6 }}>
+            <Col xs={{ span: 24 }} xl={{ span: 14, offset: 4 }}>
               <CustomHeader />
             </Col>
           </Row>
