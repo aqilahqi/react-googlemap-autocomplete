@@ -1,70 +1,61 @@
 import usePlacesAutocomplete from "use-places-autocomplete";
-import { Select, Spin } from "antd";
-import React, { useState } from "react";
+import { Input } from "antd";
 import { setPlaces, selectedPlace } from "../redux/actions/placeActions";
 import { useDispatch } from "react-redux";
-import debounce from "lodash.debounce";
-
-const { Option } = Select;
+import useOnclickOutside from "react-cool-onclickoutside";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
+
   const {
     ready,
     value,
+    suggestions: { status, data },
     setValue,
-    suggestions: { status, data, loading },
     clearSuggestions,
-  } = usePlacesAutocomplete();
+  } = usePlacesAutocomplete({
+    debounce: 500,
+  });
 
-  const [options, setOptions] = useState([]);
-
-  const onSearch = (newValue) => {
-    if (newValue) {
-      setValue(newValue);
-      status === "OK" &&
-        setOptions(
-          data.map((d) => (
-            <Option key={d.place_id} value={d.description}>
-              {d.description}
-            </Option>
-          ))
-        );
-    } else {
-      setValue("");
-      clearSuggestions();
-    }
-  };
-
-  const onChange = (address) => {
-    setValue(address, false);
+  const ref = useOnclickOutside(() => {
     clearSuggestions();
-    dispatch(setPlaces(address));
-    dispatch(selectedPlace(address));
+  });
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
   };
 
-  console.log({ value, options });
+  const handleSelect =
+    ({ description }) =>
+    () => {
+      setValue(description, false);
+      clearSuggestions();
+
+      dispatch(setPlaces(description));
+      dispatch(selectedPlace(description));
+    };
+
+  const renderSuggestions = () =>
+    data.map((suggestion) => {
+      const {
+        place_id,
+        structured_formatting: { main_text, secondary_text },
+      } = suggestion;
+
+      return (
+        <li key={place_id} onClick={handleSelect(suggestion)}>
+          <strong>{main_text}</strong> <small>{secondary_text}</small>
+        </li>
+      );
+    });
 
   return (
-    <div className="searchbox-wrapper">
-      <h4 className="input-label">Search for a new location</h4>
-      <Select
-        placeholder="Search a location.."
-        showSearch
-        value={value}
-        searchValue={value}
-        defaultActiveFirstOption={false}
-        showArrow={false}
-        filterOption={false}
-        onChange={onChange}
-        onSearch={onSearch}
-        notFoundContent={null}
-        style={{ width: "100%" }}
-        disabled={!ready}
-        loading={loading}
-      >
-        {options}
-      </Select>
+    <div ref={ref} className="searchinput-wrapper">
+      <h4 style={{ marginBottom: "0.6rem" }}>Search a new location</h4>
+      <Input value={value} onChange={handleInput} disabled={!ready} />
+      {status === "OK" && (
+        <ul className="listWrapper">{renderSuggestions()}</ul>
+      )}
     </div>
   );
 };

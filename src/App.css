@@ -85,3 +85,31 @@ p,a {
         padding: 1rem;
     }
 }
+
+.searchinput-wrapper {
+    position: relative;
+    padding: 1rem;
+}
+.listWrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    list-style: none;
+    background-color: #fff;
+    z-index: 1;
+    border: 1px solid #eee;
+    padding: 0;
+}
+
+.listWrapper li {
+    padding: 10px;
+}
+.listWrapper li + li {
+    border-top: 1px solid #eee;
+}
+
+.listWrapper li:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
