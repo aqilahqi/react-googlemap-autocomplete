@@ -44,7 +44,7 @@ const SearchBox = () => {
 
       return (
         <li key={place_id} onClick={handleSelect(suggestion)}>
-          <strong>{main_text}</strong> <small>{secondary_text}</small>
+          <strong>{main_text}</strong> <br /> <small>{secondary_text}</small>
         </li>
       );
     });
