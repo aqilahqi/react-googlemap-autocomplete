@@ -20,8 +20,10 @@ const App = () => {
         </Header>
         <Content>
           <Row>
-            <Col xs={{ span: 24 }} xl={{ span: 10, offset: 6 }}>
+            <Col xs={{ span: 24 }} xl={{ span: 6, offset: 2 }}>
               <Map />
+            </Col>
+            <Col xs={{ span: 24 }} xl={{ span: 6, offset: 6 }}>
               <div>
                 <SearchBox />
                 <SearchHistory />
