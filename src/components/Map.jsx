@@ -7,8 +7,7 @@ const Map = ({ center, zoom }) => {
 
   return (
     <div className="map">
-      <h2>Hello hiring team!</h2>
-      <p>Thank you for your time in reviewing my assessment 🤩 </p>
+      <p>Start typing and google with suggest a list of locations. Your selected location will be saved in a list below.</p>
       <br />
       <GoogleMap zoom={!lat ? zoom : 18} center={!lat ? center : { lat, lng }}>
         <MarkerF position={!lat ? center : { lat, lng }} />
